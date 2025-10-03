@@ -1,0 +1,35 @@
+{
+  "title": "GETS v0.1 schema (example subset)",
+  "type": "object",
+  "required": [
+    "InvoiceNumber",
+    "InvoiceDate",
+    "TotalAmount",
+    "SellerGSTIN",
+    "BuyerGSTIN"
+  ],
+  "properties": {
+    "InvoiceNumber": {
+      "type": "string"
+    },
+    "InvoiceDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "TotalAmount": {
+      "type": "number"
+    },
+    "SellerGSTIN": {
+      "type": "string"
+    },
+    "BuyerGSTIN": {
+      "type": "string"
+    },
+    "ItemDescription": {
+      "type": "string"
+    },
+    "Quantity": {
+      "type": "integer"
+    }
+  }
+}

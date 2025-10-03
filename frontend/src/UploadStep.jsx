@@ -10,7 +10,7 @@ export default function UploadStep({ setReportId, token }) {
     if (file) form.append("file", file);
     else form.append("paste", paste);
 
-    const res = await fetch("https://assignment-gcj1.onrender.com/api/report/upload", {
+    const res = await fetch("http://localhost:5000/api/report/upload", {
       method: "POST",
       body: form,
       headers: token ? { Authorization: "Bearer " + token } : {},

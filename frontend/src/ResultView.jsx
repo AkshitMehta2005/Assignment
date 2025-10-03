@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 export default function ResultView({ id }) {
   const [report, setReport] = useState(null);
-
+                                          
   useEffect(() => {
-    fetch("http://localhost:5000/api/report/" + id)
+    fetch("https://assignment-gcj1.onrender.com/api/report/" + id)
       .then((r) => r.json())  
       .then(setReport)
       .catch(console.error);
@@ -59,7 +59,7 @@ export default function ResultView({ id }) {
       <div style={{ marginBottom: 12 }}>
         <strong>Shareable Report Link:</strong>{" "}
         <a
-          href={`http://localhost:5000/api/report/${report._id}`}
+          href={`https://assignment-gcj1.onrender.com/api/report/${report._id}`}
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#007bff", textDecoration: "none" }}

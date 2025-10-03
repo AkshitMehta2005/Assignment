@@ -6,7 +6,7 @@ import ResultView from './ResultView';
 export default function App(){
   const [reportId, setReportId] = useState(null);
   const [token, setToken] = useState(null);
-  return ( 
+  return (  
     <div style={{fontFamily:'Arial, sans-serif', padding:20, maxWidth:900, margin:'0 auto'}}>
       
       {/* {!token ? <Login onLogin={t=>setToken(t)} /> : <div>Logged in</div>} */}

@@ -9,7 +9,7 @@ require('dotenv').config();
 const app = express(); 
 app.use(cors());
 app.use(bodyParser.json({limit: '1mb'}));
-
+  
 const PORT = process.env.PORT || 5000;
 const MONGO = process.env.MONGODB_URI || 'mongodb://localhost:27017/prd_readiness';
 

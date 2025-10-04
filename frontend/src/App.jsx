@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import UploadStep from './UploadStep';
-import ResultView from './ResultView';
+import UploadStep from './Component/UploadStep';
+import ResultView from './Component/ResultView';
 
 
 export default function App(){

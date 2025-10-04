@@ -4,13 +4,16 @@ export default function UploadStep({ setReportId, token }) {
   const [file, setFile] = useState(null);
   const [paste, setPaste] = useState("");
 
+  // ✅ Use environment variable
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const doUpload = async (e) => {
     e.preventDefault();
     const form = new FormData();
     if (file) form.append("file", file);
     else form.append("paste", paste);
 
-    const res = await fetch("https://assignment-gcj1.onrender.com/api/report/upload", {
+    const res = await fetch(`${BACKEND_URL}/api/report/upload`, {
       method: "POST",
       body: form,
       headers: token ? { Authorization: "Bearer " + token } : {},
@@ -36,7 +39,6 @@ export default function UploadStep({ setReportId, token }) {
         fontFamily: "Segoe UI, sans-serif",
       }}
     >
-      {/* App Header */}
       <h2
         style={{
           textAlign: "center",
@@ -65,7 +67,6 @@ export default function UploadStep({ setReportId, token }) {
           Upload or Paste Sample Invoices
         </h3>
 
-        {/* File Upload */}
         <div style={{ marginBottom: 18 }}>
           <label
             style={{
@@ -94,7 +95,6 @@ export default function UploadStep({ setReportId, token }) {
           />
         </div>
 
-        {/* Paste JSON */}
         <div style={{ marginBottom: 18 }}>
           <label
             style={{
@@ -125,7 +125,6 @@ export default function UploadStep({ setReportId, token }) {
           />
         </div>
 
-        {/* Upload Button */}
         <div style={{ textAlign: "center", marginTop: 20 }}>
           <button
             type="submit"

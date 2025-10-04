@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 
 export default function ResultView({ id }) {
   const [report, setReport] = useState(null);
-                                          
+
+  // Get backend URL from environment
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
-    fetch("https://assignment-gcj1.onrender.com/api/report/" + id)
-      .then((r) => r.json())  
+    fetch(`${BACKEND_URL}/api/report/${id}`)
+      .then((r) => r.json())
       .then(setReport)
       .catch(console.error);
-  }, [id]);
+  }, [id, BACKEND_URL]);
 
   const downloadJSON = () => {
     const dataStr =
@@ -55,11 +58,10 @@ export default function ResultView({ id }) {
         Analysis Results — Readiness & Gaps
       </h2>
 
-      {/* Link instead of plain Report ID */}
       <div style={{ marginBottom: 12 }}>
         <strong>Shareable Report Link:</strong>{" "}
         <a
-          href={`https://assignment-gcj1.onrender.com/api/report/${report._id}`}
+          href={`${BACKEND_URL}/api/report/${report._id}`}
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#007bff", textDecoration: "none" }}
@@ -72,7 +74,6 @@ export default function ResultView({ id }) {
         <strong>Rows Analyzed:</strong> {report.rowsSampled}
       </div>
 
-      {/* Scores */}
       <h4 style={{ marginTop: 20, marginBottom: 8, color: "#444" }}>
         Readiness Scores
       </h4>
@@ -87,7 +88,6 @@ export default function ResultView({ id }) {
         {JSON.stringify(report.scores, null, 2)}
       </pre>
 
-      {/* Coverage */}
       <h4 style={{ marginTop: 20, marginBottom: 8, color: "#444" }}>
         Field Coverage vs GETS Schema
       </h4>
@@ -102,7 +102,6 @@ export default function ResultView({ id }) {
         {JSON.stringify(report.coverage, null, 2)}
       </pre>
 
-      {/* Findings */}
       <h4 style={{ marginTop: 20, marginBottom: 8, color: "#444" }}>
         Rule Check Findings
       </h4>
